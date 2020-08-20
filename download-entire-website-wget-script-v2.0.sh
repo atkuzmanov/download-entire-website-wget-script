@@ -1,37 +1,32 @@
 #!/bin/bash
 
 # clear
-
+################################
 set -e
-
 ################################
-
-echo "Usage -> ./download-entire-website-wget-script.sh https://www.example.com/path/"
-
+timestamp() {
+  date +"%Y-%m-%d-%H%M%S"
+}
 ################################
-
+echo "Usage -> ./download-entire-website-wget-script-v2.0.sh [REPLACE-THIS-PLACEHOLDER-WITH-FILE-PATH]"
+################################
+FILE="$1"
 # URL="$1"
 DOMAIN=""
 DOMAIN_STRIPPED=""
 URL_PROTOCOL_STRIPPED=""
 TARGET_DOWNLOAD_DIR_NAME=""
-
 ################################
-
 extract_domain_name() {
     DOMAIN=$(sed -E -e 's_.*://([^/@]*@)?([^/:]+).*_\2_' <<< "$URL")
 }
 # extract_domain_name
-
 ################################
-
 strip_www_from_domain_name() {
     DOMAIN_STRIPPED=$(echo "$DOMAIN" | sed "s/^www\.//")
 }
 # strip_www_from_domain_name
-
 ################################
-
 strip_protocol_from_domain_name() {
     # URL_PROTOCOL_STRIPPED=$(echo "$URL" | sed "s/^www\.//")
 
@@ -55,9 +50,7 @@ strip_protocol_from_domain_name() {
     URL_PROTOCOL_STRIPPED="$f"
 }
 # strip_protocol_from_domain_name
-
 ################################
-
 generate_target_download_dir_name () {
     # TARGET_DOWNLOAD_DIR_NAME=$(echo $URL_PROTOCOL_STRIPPED | sed 's@/@@g')
     temp1=${URL_PROTOCOL_STRIPPED////$'_'}
@@ -65,9 +58,7 @@ generate_target_download_dir_name () {
     TARGET_DOWNLOAD_DIR_NAME="$HOME/Downloads/downloaded-websites-wget/$temp2"
 }
 # generate_target_download_dir_name
-
 ################################
-
 download_entire_website_wget() {
     wget \
     --page-requisites \
@@ -85,23 +76,22 @@ download_entire_website_wget() {
     ${URL}
 }
 # download_entire_website_wget
-
 ################################
-
 download_for_each_website_wget_from_file() {
-
-    input="./download-wget-script-v2.0-data.txt"
+    # input="./download-wget-script-v2.0-data.txt"
     while IFS= read -r line
     do
-      echo "$line"
-        # extract_domain_name
-        # strip_www_from_domain_name
-        # strip_protocol_from_domain_name
-        # generate_target_download_dir_name
-    done < "$input"
+    #   echo "$line"
+        extract_domain_name
+        strip_www_from_domain_name
+        strip_protocol_from_domain_name
+        generate_target_download_dir_name
+        download_entire_website_wget
+        sleep 1 ;
+    done < "$FILE"
+    # done < "$input"
 }
 download_for_each_website_wget_from_file
-
 ################################
 ## debugging info:
 # echo ${URL}
