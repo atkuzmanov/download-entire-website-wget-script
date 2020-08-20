@@ -59,6 +59,10 @@ generate_target_download_dir_name () {
 # generate_target_download_dir_name
 ################################
 download_entire_website_wget() {
+    ## add `--mirror` option to
+    ## Turn on options suitable for mirroring. This option turns on recursion and time-stamping, 
+    ## sets infinite recursion depth and keeps FTP directory listings. It is currently equivalent to ‘-r -N -l inf --no-remove-listing’.
+
     wget \
     --page-requisites \
     --span-hosts \
@@ -119,4 +123,6 @@ download_for_each_website_wget_from_file
 ## 
 ## https://stackoverflow.com/questions/10929453/read-a-file-line-by-line-assigning-the-value-to-a-variable
 ## https://www.cyberciti.biz/faq/unix-howto-read-line-by-line-from-file/
+## https://askubuntu.com/questions/411540/how-to-get-wget-to-download-exact-same-web-page-html-as-browser
+## https://superuser.com/questions/1150495/save-an-entire-webpage-with-all-images-and-css-into-just-one-folder-and-one-fi
 ################################
