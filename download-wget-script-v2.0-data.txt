@@ -1,0 +1,2 @@
+https://www.cyberciti.biz/faq/unix-howto-read-line-by-line-from-file/
+https://stackoverflow.com/questions/10929453/read-a-file-line-by-line-assigning-the-value-to-a-variable

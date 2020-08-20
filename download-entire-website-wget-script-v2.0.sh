@@ -10,7 +10,7 @@ echo "Usage -> ./download-entire-website-wget-script.sh https://www.example.com/
 
 ################################
 
-URL="$1"
+# URL="$1"
 DOMAIN=""
 DOMAIN_STRIPPED=""
 URL_PROTOCOL_STRIPPED=""
@@ -21,16 +21,14 @@ TARGET_DOWNLOAD_DIR_NAME=""
 extract_domain_name() {
     DOMAIN=$(sed -E -e 's_.*://([^/@]*@)?([^/:]+).*_\2_' <<< "$URL")
 }
-
-extract_domain_name
+# extract_domain_name
 
 ################################
 
 strip_www_from_domain_name() {
     DOMAIN_STRIPPED=$(echo "$DOMAIN" | sed "s/^www\.//")
 }
-
-strip_www_from_domain_name
+# strip_www_from_domain_name
 
 ################################
 
@@ -56,8 +54,7 @@ strip_protocol_from_domain_name() {
 
     URL_PROTOCOL_STRIPPED="$f"
 }
-
-strip_protocol_from_domain_name
+# strip_protocol_from_domain_name
 
 ################################
 
@@ -67,16 +64,7 @@ generate_target_download_dir_name () {
     temp2=${temp1//./$'-'}
     TARGET_DOWNLOAD_DIR_NAME="$HOME/Downloads/downloaded-websites-wget/$temp2"
 }
-
-generate_target_download_dir_name
-
-################################
-
-# echo ${URL}
-# echo ${DOMAIN}
-# echo ${DOMAIN_STRIPPED}
-# echo ${URL_PROTOCOL_STRIPPED}
-# echo ${TARGET_DOWNLOAD_DIR_NAME}
+# generate_target_download_dir_name
 
 ################################
 
@@ -96,9 +84,31 @@ download_entire_website_wget() {
     --domains ${DOMAIN_STRIPPED} \
     ${URL}
 }
+# download_entire_website_wget
 
-download_entire_website_wget
+################################
 
+download_for_each_website_wget_from_file() {
+
+    input="./download-wget-script-v2.0-data.txt"
+    while IFS= read -r line
+    do
+      echo "$line"
+        # extract_domain_name
+        # strip_www_from_domain_name
+        # strip_protocol_from_domain_name
+        # generate_target_download_dir_name
+    done < "$input"
+}
+download_for_each_website_wget_from_file
+
+################################
+## debugging info:
+# echo ${URL}
+# echo ${DOMAIN}
+# echo ${DOMAIN_STRIPPED}
+# echo ${URL_PROTOCOL_STRIPPED}
+# echo ${TARGET_DOWNLOAD_DIR_NAME}
 ################################
 ## References
 ## https://stackoverflow.com/questions/2497215/how-to-extract-domain-name-from-url
@@ -120,6 +130,6 @@ download_entire_website_wget
 ## https://stackoverflow.com/questions/2871181/replacing-some-characters-in-a-string-with-another-character
 ## https://unix.stackexchange.com/questions/272596/replace-character-x-with-character-y-in-a-string-with-bash
 ## 
-## 
-## 
+## https://stackoverflow.com/questions/10929453/read-a-file-line-by-line-assigning-the-value-to-a-variable
+## https://www.cyberciti.biz/faq/unix-howto-read-line-by-line-from-file/
 ################################
