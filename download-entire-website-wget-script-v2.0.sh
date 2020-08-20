@@ -82,6 +82,7 @@ download_for_each_website_wget_from_file() {
     while IFS= read -r line
     do
     #   echo "$line"
+        URL="$line"
         extract_domain_name
         strip_www_from_domain_name
         strip_protocol_from_domain_name
