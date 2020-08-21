@@ -127,4 +127,5 @@ download_for_each_website_wget_from_file
 ## https://www.cyberciti.biz/faq/unix-howto-read-line-by-line-from-file/
 ## https://askubuntu.com/questions/411540/how-to-get-wget-to-download-exact-same-web-page-html-as-browser
 ## https://superuser.com/questions/1150495/save-an-entire-webpage-with-all-images-and-css-into-just-one-folder-and-one-fi
+## https://www.puzzle.ch/de/blog/articles/2018/02/12/phantomjs-is-dead-long-live-headless-browsers
 ################################
