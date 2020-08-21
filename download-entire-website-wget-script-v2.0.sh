@@ -64,6 +64,9 @@ download_entire_website_wget() {
     ## sets infinite recursion depth and keeps FTP directory listings. It is currently equivalent to ‘-r -N -l inf --no-remove-listing’.
 
     wget \
+    --recursive \
+    --level=3 \
+    --timestamping \
     --page-requisites \
     --span-hosts \
     --convert-links \
