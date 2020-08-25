@@ -125,13 +125,6 @@ download_for_each_website_wget_from_file() {
 }
 download_for_each_website_wget_from_file
 ################################
-## debugging info:
-# echo ${URL}
-# echo ${DOMAIN}
-# echo ${DOMAIN_STRIPPED}
-# echo ${URL_PROTOCOL_STRIPPED}
-# echo ${TARGET_DOWNLOAD_DIR_NAME}
-################################
 ## References
 ## https://stackoverflow.com/questions/2497215/how-to-extract-domain-name-from-url
 ## https://superuser.com/questions/14403/how-can-i-download-an-entire-website
