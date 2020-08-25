@@ -118,7 +118,7 @@ download_for_each_website_wget_from_file() {
             strip_protocol_from_domain_name
             generate_target_download_dir_name
             download_entire_website_wget
-            sleep 1 ;
+            # sleep 1 ;
         fi
     done < "$FILE"
     echo "Done."
